@@ -26,8 +26,7 @@ function divideAmount() {
     var cashAmount = Number(cashInput.value);
     if(Math.sign(billAmount) === -1 || Math.sign(cashAmount) === -1){
         returnStat.innerText ="Not how the world works! Only positive figures!"
-    }
-    else if(cashAmount<billAmount){
+    } else if(cashAmount<billAmount){
         returnStat.innerText = "C'mon dude, this ain't funny. Pay up!"
     }else{
     var returnAmount = cashAmount - billAmount;
