@@ -22,13 +22,19 @@ function notes(output, amount, currency) {
 
 
 function divideAmount() {
-    var billAmount = billInput.value;
-    var cashAmount = cashInput.value;
+    var billAmount = Number(billInput.value);
+    var cashAmount = Number(cashInput.value);
+    if(Math.sign(billAmount) === -1 || Math.sign(cashAmount) === -1){
+        returnStat.innerText = "Not how the world works! Only positive figures!"
+    }
+    else if(cashAmount<billAmount){
+        returnStat.innerText = "C'mon dude, this ain't funny. Pay up!"
+    }else{
     var returnAmount = cashAmount - billAmount;
     returnStat.innerText = "Amount to be returned: ₹" + returnAmount;
     //First Attempt This works efficiently but looks too messy, finding a better way
     notes(output1, notes(output5, notes(output10, notes(output50, notes(output100, notes(output500, notes(output2000, returnAmount, 2000), 500), 100), 50), 10), 5), 1);
-
+}
 
     //Second attempt, not worth the trouble to make it less messy
     // var notes2000 = Math.floor(returnAmount / 2000);
