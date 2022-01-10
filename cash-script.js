@@ -1,18 +1,19 @@
-var calculateButton = document.querySelector("#button-calculate");
-var billInput = document.querySelector("#input-bill");
-var cashInput = document.querySelector("#input-cash");
-var output2000 = document.querySelector("#output-2000");
-var output500 = document.querySelector("#output-500");
-var output100 = document.querySelector("#output-100");
-var output50 = document.querySelector("#output-50");
-var output10 = document.querySelector("#output-10");
-var output5 = document.querySelector("#output-5");
-var output1 = document.querySelector("#output-1");
-var returnStat = document.querySelector("#return-stat")
+//ES6 Version Code
+const calculateButton = document.querySelector("#button-calculate");
+const billInput = document.querySelector("#input-bill");
+const cashInput = document.querySelector("#input-cash");
+const output2000 = document.querySelector("#output-2000");
+const output500 = document.querySelector("#output-500");
+const output100 = document.querySelector("#output-100");
+const output50 = document.querySelector("#output-50");
+const output10 = document.querySelector("#output-10");
+const output5 = document.querySelector("#output-5");
+const output1 = document.querySelector("#output-1");
+const returnStat = document.querySelector("#return-stat")
 
 
-function notes(output, amount, currency) {
-    var currentNotes = Math.floor(amount / currency);
+const notes =(output, amount, currency) => {
+    let currentNotes = Math.floor(amount / currency);
     output.innerText = currentNotes;
     return amount - (currentNotes * currency);
 }
@@ -21,19 +22,19 @@ function notes(output, amount, currency) {
 
 
 
-function divideAmount() {
-    var billAmount = Number(billInput.value);
-    var cashAmount = Number(cashInput.value);
+const divideAmount=() => {
+    let billAmount = Number(billInput.value);
+    let cashAmount = Number(cashInput.value);
     if(Math.sign(billAmount) === -1 || Math.sign(cashAmount) === -1){
-        returnStat.innerText ="Not how the world works! Only positive figures!";
+        returnStat.innerText =`Not how the world works! Only positive figures!`;
     }else if(billAmount === 0){
-        returnStat.innerText ="Seems like there is no bill to pay!";
+        returnStat.innerText =`Seems like there is no bill to pay!`;
     }
      else if(cashAmount<billAmount){
-        returnStat.innerText = "C'mon dude, this ain't funny. Pay up!"
+        returnStat.innerText = `C'mon dude, this ain't funny. Pay up!`;
     }else{
-    var returnAmount = cashAmount - billAmount;
-    returnStat.innerText = "Amount to be returned: ₹" + returnAmount;
+    let returnAmount = cashAmount - billAmount;
+    returnStat.innerText = `Amount to be returned: ₹ ${returnAmount}`;
     //First Attempt This works efficiently but looks too messy, finding a better way
     notes(output1, notes(output5, notes(output10, notes(output50, notes(output100, notes(output500, notes(output2000, returnAmount, 2000), 500), 100), 50), 10), 5), 1);
 }
